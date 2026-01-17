@@ -41,17 +41,29 @@ final class ToothbrushDetector {
     }
 
     private func loadModel() {
-        // TODO: Load the actual YOLO Core ML model
-        // The model file should be added to the project bundle
-        //
-        // Example:
-        // guard let modelURL = Bundle.main.url(forResource: "yolov8n", withExtension: "mlmodelc"),
-        //       let mlModel = try? MLModel(contentsOf: modelURL),
-        //       let visionModel = try? VNCoreMLModel(for: mlModel) else {
-        //     print("Failed to load YOLO model")
-        //     return
-        // }
-        // self.model = visionModel
+        // Load the YOLOv8n CoreML model
+        // The model detects 80 COCO classes including toothbrush (class 79)
+        do {
+            // Try loading compiled model first (faster)
+            if let modelURL = Bundle.main.url(forResource: "yolov8n", withExtension: "mlmodelc") {
+                let mlModel = try MLModel(contentsOf: modelURL)
+                self.model = try VNCoreMLModel(for: mlModel)
+                print("ToothbrushDetector: Loaded compiled model")
+                return
+            }
+
+            // Fall back to mlpackage
+            if let modelURL = Bundle.main.url(forResource: "yolov8n", withExtension: "mlpackage") {
+                let mlModel = try MLModel(contentsOf: modelURL)
+                self.model = try VNCoreMLModel(for: mlModel)
+                print("ToothbrushDetector: Loaded mlpackage model")
+                return
+            }
+
+            print("ToothbrushDetector: Model file not found in bundle")
+        } catch {
+            print("ToothbrushDetector: Failed to load model - \(error.localizedDescription)")
+        }
     }
 
     // MARK: - Detection
