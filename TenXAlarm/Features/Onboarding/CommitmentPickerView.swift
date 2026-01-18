@@ -4,6 +4,7 @@ import SwiftUI
 struct CommitmentPickerView: View {
     @Binding var weeklyMinimum: Int
     let onContinue: () -> Void
+    let theme: AppTheme
 
     private let minDays = 4
     private let maxDays = 7
@@ -16,10 +17,11 @@ struct CommitmentPickerView: View {
             VStack(spacing: 12) {
                 Text("Your Commitment")
                     .font(.largeTitle.bold())
+                    .foregroundStyle(OnboardingColors.primaryText(for: theme))
 
-                Text("How many days per week will you commit to brushing?")
+                Text("How many days per week will you wake up early?")
                     .font(.body)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(OnboardingColors.secondaryText(for: theme))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
@@ -30,17 +32,17 @@ struct CommitmentPickerView: View {
             VStack(spacing: 24) {
                 Text("\(weeklyMinimum)")
                     .font(.system(size: 72, weight: .bold, design: .rounded))
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
 
                 Text("days per week")
                     .font(.title3)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(OnboardingColors.secondaryText(for: theme))
 
                 // Slider
                 HStack {
                     Text("\(minDays)")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(OnboardingColors.secondaryText(for: theme))
 
                     Slider(
                         value: Binding(
@@ -50,11 +52,11 @@ struct CommitmentPickerView: View {
                         in: Double(minDays)...Double(maxDays),
                         step: 1
                     )
-                    .tint(.accent)
+                    .tint(Color.accentColor)
 
                     Text("\(maxDays)")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(OnboardingColors.secondaryText(for: theme))
                 }
                 .padding(.horizontal, 32)
             }
@@ -64,17 +66,18 @@ struct CommitmentPickerView: View {
                 Label {
                     Text("7 days = infinite streak potential")
                         .font(.subheadline)
+                        .foregroundStyle(OnboardingColors.primaryText(for: theme))
                 } icon: {
                     Image(systemName: "flame.fill")
                         .foregroundStyle(.orange)
                 }
                 .padding()
-                .background(Color(.secondarySystemBackground))
+                .background(OnboardingColors.cardBackground(for: theme))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             } else {
-                Text("With \(weeklyMinimum) days, your max streak is \(weeklyMinimum) days before reset")
+                Text("You can set alarms on more than \(weeklyMinimum) days to keep your streak going longer")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(OnboardingColors.secondaryText(for: theme))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
@@ -98,5 +101,9 @@ struct CommitmentPickerView: View {
 }
 
 #Preview {
-    CommitmentPickerView(weeklyMinimum: .constant(4), onContinue: {})
+    ZStack {
+        OnboardingColors.background(for: .dark)
+            .ignoresSafeArea()
+        CommitmentPickerView(weeklyMinimum: .constant(4), onContinue: {}, theme: .dark)
+    }
 }
