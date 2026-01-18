@@ -33,6 +33,7 @@ struct WelcomeView: View {
                         .foregroundStyle(OnboardingColors.primaryText(for: theme))
                 }
 
+                // swiftlint:disable:next line_length
                 Text("Once your alarm goes off, it won't stop until our ML models approve a picture of you brushing your teeth. No snooze. No skip.")
                     .font(.subheadline)
                     .foregroundStyle(OnboardingColors.secondaryText(for: theme))

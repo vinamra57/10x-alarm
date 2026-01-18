@@ -112,15 +112,13 @@ struct TimeSelectionView: View {
             Spacer()
 
             // Continue button
-            Button(action: {
+            Button {
                 // Ensure all times are set
-                for day in sortedDays {
-                    if alarmTimes[day] == nil {
-                        alarmTimes[day] = globalTime
-                    }
+                for day in sortedDays where alarmTimes[day] == nil {
+                    alarmTimes[day] = globalTime
                 }
                 onContinue()
-            }) {
+            } label: {
                 Text("Continue")
                     .font(.headline)
                     .frame(maxWidth: .infinity)

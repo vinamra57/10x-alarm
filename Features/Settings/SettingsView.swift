@@ -48,8 +48,8 @@ struct SettingsView: View {
                 } header: {
                     Text("Alarms")
                 } footer: {
-                    if (userSettings?.weeklyMinimum ?? 4) < 7 {
-                        Text("You can set alarms on more than \(userSettings?.weeklyMinimum ?? 4) days to keep your streak going longer.")
+                    if let minimum = userSettings?.weeklyMinimum, minimum < 7 {
+                        Text("You can set alarms on more than \(minimum) days to keep your streak going longer.")
                     }
                 }
 

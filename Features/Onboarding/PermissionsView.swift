@@ -72,6 +72,7 @@ struct PermissionsView: View {
                             .font(.subheadline.bold())
                             .foregroundStyle(OnboardingColors.primaryText(for: selectedTheme))
 
+                        // swiftlint:disable:next line_length
                         Text("Photos are deleted immediately after verification. No images are stored, and your data is never used for ML training or shared with anyone.")
                             .font(.caption)
                             .foregroundStyle(OnboardingColors.secondaryText(for: selectedTheme))

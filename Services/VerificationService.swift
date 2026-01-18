@@ -28,7 +28,7 @@ final class VerificationService {
     // MARK: - Main Verification
 
     /// Verify that the image shows someone actively brushing their teeth
-    func verify(image: UIImage) async -> VerificationOutput {
+    func verify(image: UIImage) async -> VerificationOutput { // swiftlint:disable:this function_body_length
         // Step 1: Face Detection
         guard let faceResult = await faceAnalyzer.detectFace(in: image) else {
             return VerificationOutput(

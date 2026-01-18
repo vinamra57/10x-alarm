@@ -97,12 +97,12 @@ struct OnboardingContainerView: View {
         let fallbackTime = Self.defaultAlarmTime
 
         // Find the earliest alarm time from user's selections, or use default
-        let earliestTime: Date = alarmTimes.values.min(by: { a, b in
-            let calA = Calendar.current.dateComponents([.hour, .minute], from: a)
-            let calB = Calendar.current.dateComponents([.hour, .minute], from: b)
-            let minutesA = (calA.hour ?? 0) * 60 + (calA.minute ?? 0)
-            let minutesB = (calB.hour ?? 0) * 60 + (calB.minute ?? 0)
-            return minutesA < minutesB
+        let earliestTime: Date = alarmTimes.values.min(by: { lhs, rhs in
+            let lhsComponents = Calendar.current.dateComponents([.hour, .minute], from: lhs)
+            let rhsComponents = Calendar.current.dateComponents([.hour, .minute], from: rhs)
+            let lhsMinutes = (lhsComponents.hour ?? 0) * 60 + (lhsComponents.minute ?? 0)
+            let rhsMinutes = (rhsComponents.hour ?? 0) * 60 + (rhsComponents.minute ?? 0)
+            return lhsMinutes < rhsMinutes
         }) ?? fallbackTime
 
         // Auto-add days if user hasn't selected enough to meet minimum
@@ -118,10 +118,8 @@ struct OnboardingContainerView: View {
         }
 
         // Ensure all selected days have alarm times
-        for day in finalSelectedDays {
-            if alarmTimes[day] == nil {
-                alarmTimes[day] = earliestTime
-            }
+        for day in finalSelectedDays where alarmTimes[day] == nil {
+            alarmTimes[day] = earliestTime
         }
 
         // Save settings

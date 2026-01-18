@@ -134,7 +134,7 @@ final class ToothbrushDetector {
 
         return await withCheckedContinuation { continuation in
             // Use Vision's built-in object recognition
-            let request = VNRecognizeAnimalsRequest { request, error in
+            let request = VNRecognizeAnimalsRequest { _, _ in
                 // This won't detect toothbrushes, but serves as a placeholder
                 // In production, the YOLO model should be used
                 continuation.resume(returning: nil)
