@@ -9,7 +9,6 @@ struct DashboardView: View {
     @Query(sort: \Verification.date, order: .reverse) private var verifications: [Verification]
 
     @State private var showingSettings = false
-    @State private var showingVerification = false
 
     private var currentStreak: Int {
         streakData.first?.currentStreak ?? 0
@@ -19,10 +18,6 @@ struct DashboardView: View {
         streakData.first?.longestStreak ?? 0
     }
 
-    private var hasVerifiedToday: Bool {
-        streakData.first?.hasVerifiedToday ?? false
-    }
-
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -30,8 +25,7 @@ struct DashboardView: View {
                     // Streak card
                     StreakCard(
                         currentStreak: currentStreak,
-                        longestStreak: longestStreak,
-                        hasVerifiedToday: hasVerifiedToday
+                        longestStreak: longestStreak
                     )
 
                     // Week progress
@@ -42,15 +36,10 @@ struct DashboardView: View {
 
                     // Next alarm
                     NextAlarmCard(daySchedules: daySchedules)
-
-                    // Quick verify button (for non-alarm days)
-                    if !hasVerifiedToday && !isTodayAlarmDay {
-                        BonusBrushCard(onVerify: { showingVerification = true })
-                    }
                 }
                 .padding()
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Color.appBackground)
             .navigationTitle("10x Alarm")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -64,9 +53,6 @@ struct DashboardView: View {
             .sheet(isPresented: $showingSettings) {
                 SettingsView()
             }
-            .fullScreenCover(isPresented: $showingVerification) {
-                CameraVerificationView(isAlarmTriggered: false)
-            }
         }
     }
 
@@ -78,13 +64,6 @@ struct DashboardView: View {
 
         return verifications.filter { $0.date >= startOfWeek }
     }
-
-    private var isTodayAlarmDay: Bool {
-        let calendar = Calendar.current
-        let weekday = calendar.component(.weekday, from: .now)
-        let dayOfWeek = weekday == 1 ? 7 : weekday - 1
-        return daySchedules.first { $0.dayOfWeek == dayOfWeek }?.isAlarmEnabled ?? false
-    }
 }
 
 // MARK: - Streak Card
@@ -92,7 +71,6 @@ struct DashboardView: View {
 struct StreakCard: View {
     let currentStreak: Int
     let longestStreak: Int
-    let hasVerifiedToday: Bool
 
     var body: some View {
         VStack(spacing: 16) {
@@ -123,25 +101,19 @@ struct StreakCard: View {
 
             Divider()
 
-            // Stats row
+            // Best streak
             HStack {
                 StatItem(
-                    label: "Best",
-                    value: "\(longestStreak)",
+                    label: "Best Streak",
+                    value: "\(longestStreak) days",
                     icon: "trophy.fill"
                 )
 
                 Spacer()
-
-                StatItem(
-                    label: "Today",
-                    value: hasVerifiedToday ? "Done" : "Pending",
-                    icon: hasVerifiedToday ? "checkmark.circle.fill" : "circle"
-                )
             }
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color.cardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
@@ -154,7 +126,7 @@ struct StatItem: View {
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: icon)
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(label)
@@ -204,7 +176,7 @@ struct WeekProgressCard: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color.cardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
@@ -281,7 +253,7 @@ struct NextAlarmCard: View {
         HStack {
             Image(systemName: "alarm.fill")
                 .font(.title2)
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Next Alarm")
@@ -293,12 +265,9 @@ struct NextAlarmCard: View {
             }
 
             Spacer()
-
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.secondary)
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color.cardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
@@ -347,41 +316,35 @@ struct NextAlarmCard: View {
     }
 }
 
-// MARK: - Bonus Brush Card
-
-struct BonusBrushCard: View {
-    let onVerify: () -> Void
-
-    var body: some View {
-        Button(action: onVerify) {
-            HStack {
-                Image(systemName: "plus.circle.fill")
-                    .font(.title2)
-                    .foregroundStyle(.accent)
-
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Bonus Brush")
-                        .font(.headline)
-
-                    Text("Verify now to extend your streak")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer()
-
-                Image(systemName: "chevron.right")
-                    .foregroundStyle(.secondary)
-            }
-            .padding()
-            .background(Color(.systemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 16))
-        }
-        .buttonStyle(.plain)
-    }
-}
-
 #Preview {
     DashboardView()
         .modelContainer(for: [StreakData.self, DaySchedule.self, Verification.self], inMemory: true)
+}
+
+// MARK: - Custom Colors
+
+extension Color {
+    /// Main background - dark blue-gray in dark mode
+    static var appBackground: Color {
+        Color(UIColor { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(red: 0.08, green: 0.08, blue: 0.11, alpha: 1.0)
+            default:
+                return UIColor.systemGroupedBackground
+            }
+        })
+    }
+
+    /// Card background - better contrast in dark mode
+    static var cardBackground: Color {
+        Color(UIColor { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(red: 0.14, green: 0.14, blue: 0.18, alpha: 1.0)
+            default:
+                return UIColor.systemBackground
+            }
+        })
+    }
 }

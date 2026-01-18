@@ -1,0 +1,918 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C2042E0F2F1B589B00AD7167 /* TenXAlarmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DF02F1B589B00AD7167 /* TenXAlarmApp.swift */; };
+		C2042E102F1B589B00AD7167 /* SpatialValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E022F1B589B00AD7167 /* SpatialValidator.swift */; };
+		C2042E112F1B589B00AD7167 /* VerificationResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DFE2F1B589B00AD7167 /* VerificationResultView.swift */; };
+		C2042E122F1B589B00AD7167 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DF92F1B589B00AD7167 /* WelcomeView.swift */; };
+		C2042E132F1B589B00AD7167 /* DaySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DF52F1B589B00AD7167 /* DaySelectionView.swift */; };
+		C2042E142F1B589B00AD7167 /* AlarmPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DED2F1B589B00AD7167 /* AlarmPresentation.swift */; };
+		C2042E152F1B589B00AD7167 /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E092F1B589B00AD7167 /* Verification.swift */; };
+		C2042E162F1B589B00AD7167 /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DF82F1B589B00AD7167 /* TimeSelectionView.swift */; };
+		C2042E172F1B589B00AD7167 /* ToothbrushDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E032F1B589B00AD7167 /* ToothbrushDetector.swift */; };
+		C2042E182F1B589B00AD7167 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E082F1B589B00AD7167 /* UserSettings.swift */; };
+		C2042E192F1B589B00AD7167 /* StreakService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E0C2F1B589B00AD7167 /* StreakService.swift */; };
+		C2042E1A2F1B589B00AD7167 /* yolov8n.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C2042E042F1B589B00AD7167 /* yolov8n.mlpackage */; };
+		C2042E1B2F1B589B00AD7167 /* CameraVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DFD2F1B589B00AD7167 /* CameraVerificationView.swift */; };
+		C2042E1C2F1B589B00AD7167 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E0D2F1B589B00AD7167 /* VerificationService.swift */; };
+		C2042E1D2F1B589B00AD7167 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DFB2F1B589B00AD7167 /* SettingsView.swift */; };
+		C2042E1E2F1B589B00AD7167 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DF22F1B589B00AD7167 /* DashboardView.swift */; };
+		C2042E1F2F1B589B00AD7167 /* VerifyBrushIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DEE2F1B589B00AD7167 /* VerifyBrushIntent.swift */; };
+		C2042E202F1B589B00AD7167 /* CommitmentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DF42F1B589B00AD7167 /* CommitmentPickerView.swift */; };
+		C2042E212F1B589B00AD7167 /* AlarmLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DEC2F1B589B00AD7167 /* AlarmLiveActivity.swift */; };
+		C2042E222F1B589B00AD7167 /* FaceAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E012F1B589B00AD7167 /* FaceAnalyzer.swift */; };
+		C2042E232F1B589B00AD7167 /* AlarmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E0B2F1B589B00AD7167 /* AlarmService.swift */; };
+		C2042E242F1B589B00AD7167 /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DF62F1B589B00AD7167 /* OnboardingContainerView.swift */; };
+		C2042E252F1B589B00AD7167 /* StreakData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E072F1B589B00AD7167 /* StreakData.swift */; };
+		C2042E262F1B589B00AD7167 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042DF72F1B589B00AD7167 /* PermissionsView.swift */; };
+		C2042E272F1B589B00AD7167 /* DaySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2042E062F1B589B00AD7167 /* DaySchedule.swift */; };
+		C2042E2F2F1B590900AD7167 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2042E2E2F1B590900AD7167 /* WidgetKit.framework */; };
+		C2042E312F1B590900AD7167 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2042E302F1B590900AD7167 /* SwiftUI.framework */; };
+		C2042E3C2F1B590A00AD7167 /* 10x Alarm WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C2042E2C2F1B590900AD7167 /* 10x Alarm WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C2042E6D2F1C4C4B00AD7167 /* Assets 2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2042E6C2F1C4C4B00AD7167 /* Assets 2.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2042DD02F1B579200AD7167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2042DB72F1B579100AD7167 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2042DBE2F1B579100AD7167;
+			remoteInfo = "10x Alarm";
+		};
+		C2042DDA2F1B579200AD7167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2042DB72F1B579100AD7167 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2042DBE2F1B579100AD7167;
+			remoteInfo = "10x Alarm";
+		};
+		C2042E3A2F1B590A00AD7167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2042DB72F1B579100AD7167 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2042E2B2F1B590900AD7167;
+			remoteInfo = "10x Alarm WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C2042E412F1B590A00AD7167 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C2042E3C2F1B590A00AD7167 /* 10x Alarm WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C2042DBF2F1B579100AD7167 /* 10x Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10x Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2042DCF2F1B579200AD7167 /* 10x AlarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "10x AlarmTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2042DD92F1B579200AD7167 /* 10x AlarmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "10x AlarmUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2042DEC2F1B589B00AD7167 /* AlarmLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmLiveActivity.swift; sourceTree = "<group>"; };
+		C2042DED2F1B589B00AD7167 /* AlarmPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPresentation.swift; sourceTree = "<group>"; };
+		C2042DEE2F1B589B00AD7167 /* VerifyBrushIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyBrushIntent.swift; sourceTree = "<group>"; };
+		C2042DF02F1B589B00AD7167 /* TenXAlarmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenXAlarmApp.swift; sourceTree = "<group>"; };
+		C2042DF22F1B589B00AD7167 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		C2042DF42F1B589B00AD7167 /* CommitmentPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentPickerView.swift; sourceTree = "<group>"; };
+		C2042DF52F1B589B00AD7167 /* DaySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySelectionView.swift; sourceTree = "<group>"; };
+		C2042DF62F1B589B00AD7167 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
+		C2042DF72F1B589B00AD7167 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
+		C2042DF82F1B589B00AD7167 /* TimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
+		C2042DF92F1B589B00AD7167 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		C2042DFB2F1B589B00AD7167 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C2042DFD2F1B589B00AD7167 /* CameraVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVerificationView.swift; sourceTree = "<group>"; };
+		C2042DFE2F1B589B00AD7167 /* VerificationResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationResultView.swift; sourceTree = "<group>"; };
+		C2042E012F1B589B00AD7167 /* FaceAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnalyzer.swift; sourceTree = "<group>"; };
+		C2042E022F1B589B00AD7167 /* SpatialValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialValidator.swift; sourceTree = "<group>"; };
+		C2042E032F1B589B00AD7167 /* ToothbrushDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToothbrushDetector.swift; sourceTree = "<group>"; };
+		C2042E042F1B589B00AD7167 /* yolov8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8n.mlpackage; sourceTree = "<group>"; };
+		C2042E062F1B589B00AD7167 /* DaySchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySchedule.swift; sourceTree = "<group>"; };
+		C2042E072F1B589B00AD7167 /* StreakData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakData.swift; sourceTree = "<group>"; };
+		C2042E082F1B589B00AD7167 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		C2042E092F1B589B00AD7167 /* Verification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verification.swift; sourceTree = "<group>"; };
+		C2042E0B2F1B589B00AD7167 /* AlarmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmService.swift; sourceTree = "<group>"; };
+		C2042E0C2F1B589B00AD7167 /* StreakService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakService.swift; sourceTree = "<group>"; };
+		C2042E0D2F1B589B00AD7167 /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
+		C2042E2C2F1B590900AD7167 /* 10x Alarm WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "10x Alarm WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2042E2E2F1B590900AD7167 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C2042E302F1B590900AD7167 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		C2042E452F1B5B9400AD7167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C2042E482F1B5E9C00AD7167 /* 10x Alarm WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "10x Alarm WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		C2042E6C2F1C4C4B00AD7167 /* Assets 2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 2.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		C2042E322F1B590900AD7167 /* 10x Alarm Widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "10x Alarm Widget";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2042DBC2F1B579100AD7167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042DCC2F1B579200AD7167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042DD62F1B579200AD7167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042E292F1B590900AD7167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2042E312F1B590900AD7167 /* SwiftUI.framework in Frameworks */,
+				C2042E2F2F1B590900AD7167 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C2042DB62F1B579100AD7167 = {
+			isa = PBXGroup;
+			children = (
+				C2042E482F1B5E9C00AD7167 /* 10x Alarm WidgetExtension.entitlements */,
+				C2042E452F1B5B9400AD7167 /* Info.plist */,
+				C2042DEF2F1B589B00AD7167 /* AlarmKit */,
+				C2042DF12F1B589B00AD7167 /* App */,
+				C2042E002F1B589B00AD7167 /* Features */,
+				C2042E052F1B589B00AD7167 /* ML */,
+				C2042E0A2F1B589B00AD7167 /* Models */,
+				C2042E0E2F1B589B00AD7167 /* Services */,
+				C2042E322F1B590900AD7167 /* 10x Alarm Widget */,
+				C2042E2D2F1B590900AD7167 /* Frameworks */,
+				C2042DC02F1B579100AD7167 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C2042DC02F1B579100AD7167 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2042DBF2F1B579100AD7167 /* 10x Alarm.app */,
+				C2042DCF2F1B579200AD7167 /* 10x AlarmTests.xctest */,
+				C2042DD92F1B579200AD7167 /* 10x AlarmUITests.xctest */,
+				C2042E2C2F1B590900AD7167 /* 10x Alarm WidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2042DEF2F1B589B00AD7167 /* AlarmKit */ = {
+			isa = PBXGroup;
+			children = (
+				C2042DEC2F1B589B00AD7167 /* AlarmLiveActivity.swift */,
+				C2042DED2F1B589B00AD7167 /* AlarmPresentation.swift */,
+				C2042DEE2F1B589B00AD7167 /* VerifyBrushIntent.swift */,
+			);
+			path = AlarmKit;
+			sourceTree = "<group>";
+		};
+		C2042DF12F1B589B00AD7167 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C2042E6C2F1C4C4B00AD7167 /* Assets 2.xcassets */,
+				C2042DF02F1B589B00AD7167 /* TenXAlarmApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C2042DF32F1B589B00AD7167 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				C2042DF22F1B589B00AD7167 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		C2042DFA2F1B589B00AD7167 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C2042DF42F1B589B00AD7167 /* CommitmentPickerView.swift */,
+				C2042DF52F1B589B00AD7167 /* DaySelectionView.swift */,
+				C2042DF62F1B589B00AD7167 /* OnboardingContainerView.swift */,
+				C2042DF72F1B589B00AD7167 /* PermissionsView.swift */,
+				C2042DF82F1B589B00AD7167 /* TimeSelectionView.swift */,
+				C2042DF92F1B589B00AD7167 /* WelcomeView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C2042DFC2F1B589B00AD7167 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C2042DFB2F1B589B00AD7167 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		C2042DFF2F1B589B00AD7167 /* Verification */ = {
+			isa = PBXGroup;
+			children = (
+				C2042DFD2F1B589B00AD7167 /* CameraVerificationView.swift */,
+				C2042DFE2F1B589B00AD7167 /* VerificationResultView.swift */,
+			);
+			path = Verification;
+			sourceTree = "<group>";
+		};
+		C2042E002F1B589B00AD7167 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				C2042DF32F1B589B00AD7167 /* Dashboard */,
+				C2042DFA2F1B589B00AD7167 /* Onboarding */,
+				C2042DFC2F1B589B00AD7167 /* Settings */,
+				C2042DFF2F1B589B00AD7167 /* Verification */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		C2042E052F1B589B00AD7167 /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				C2042E012F1B589B00AD7167 /* FaceAnalyzer.swift */,
+				C2042E022F1B589B00AD7167 /* SpatialValidator.swift */,
+				C2042E032F1B589B00AD7167 /* ToothbrushDetector.swift */,
+				C2042E042F1B589B00AD7167 /* yolov8n.mlpackage */,
+			);
+			path = ML;
+			sourceTree = "<group>";
+		};
+		C2042E0A2F1B589B00AD7167 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2042E062F1B589B00AD7167 /* DaySchedule.swift */,
+				C2042E072F1B589B00AD7167 /* StreakData.swift */,
+				C2042E082F1B589B00AD7167 /* UserSettings.swift */,
+				C2042E092F1B589B00AD7167 /* Verification.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C2042E0E2F1B589B00AD7167 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C2042E0B2F1B589B00AD7167 /* AlarmService.swift */,
+				C2042E0C2F1B589B00AD7167 /* StreakService.swift */,
+				C2042E0D2F1B589B00AD7167 /* VerificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C2042E2D2F1B590900AD7167 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2042E2E2F1B590900AD7167 /* WidgetKit.framework */,
+				C2042E302F1B590900AD7167 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2042DBE2F1B579100AD7167 /* 10x Alarm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2042DE32F1B579200AD7167 /* Build configuration list for PBXNativeTarget "10x Alarm" */;
+			buildPhases = (
+				C2042DBB2F1B579100AD7167 /* Sources */,
+				C2042DBC2F1B579100AD7167 /* Frameworks */,
+				C2042DBD2F1B579100AD7167 /* Resources */,
+				C2042E412F1B590A00AD7167 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2042E3B2F1B590A00AD7167 /* PBXTargetDependency */,
+			);
+			name = "10x Alarm";
+			packageProductDependencies = (
+			);
+			productName = "10x Alarm";
+			productReference = C2042DBF2F1B579100AD7167 /* 10x Alarm.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2042DCE2F1B579200AD7167 /* 10x AlarmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2042DE62F1B579200AD7167 /* Build configuration list for PBXNativeTarget "10x AlarmTests" */;
+			buildPhases = (
+				C2042DCB2F1B579200AD7167 /* Sources */,
+				C2042DCC2F1B579200AD7167 /* Frameworks */,
+				C2042DCD2F1B579200AD7167 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2042DD12F1B579200AD7167 /* PBXTargetDependency */,
+			);
+			name = "10x AlarmTests";
+			packageProductDependencies = (
+			);
+			productName = "10x AlarmTests";
+			productReference = C2042DCF2F1B579200AD7167 /* 10x AlarmTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C2042DD82F1B579200AD7167 /* 10x AlarmUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2042DE92F1B579200AD7167 /* Build configuration list for PBXNativeTarget "10x AlarmUITests" */;
+			buildPhases = (
+				C2042DD52F1B579200AD7167 /* Sources */,
+				C2042DD62F1B579200AD7167 /* Frameworks */,
+				C2042DD72F1B579200AD7167 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2042DDB2F1B579200AD7167 /* PBXTargetDependency */,
+			);
+			name = "10x AlarmUITests";
+			packageProductDependencies = (
+			);
+			productName = "10x AlarmUITests";
+			productReference = C2042DD92F1B579200AD7167 /* 10x AlarmUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		C2042E2B2F1B590900AD7167 /* 10x Alarm WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2042E3E2F1B590A00AD7167 /* Build configuration list for PBXNativeTarget "10x Alarm WidgetExtension" */;
+			buildPhases = (
+				C2042E282F1B590900AD7167 /* Sources */,
+				C2042E292F1B590900AD7167 /* Frameworks */,
+				C2042E2A2F1B590900AD7167 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C2042E322F1B590900AD7167 /* 10x Alarm Widget */,
+			);
+			name = "10x Alarm WidgetExtension";
+			packageProductDependencies = (
+			);
+			productName = "10x Alarm WidgetExtension";
+			productReference = C2042E2C2F1B590900AD7167 /* 10x Alarm WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2042DB72F1B579100AD7167 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					C2042DBE2F1B579100AD7167 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					C2042DCE2F1B579200AD7167 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = C2042DBE2F1B579100AD7167;
+					};
+					C2042DD82F1B579200AD7167 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = C2042DBE2F1B579100AD7167;
+					};
+					C2042E2B2F1B590900AD7167 = {
+						CreatedOnToolsVersion = 16.4;
+						LastSwiftMigration = 1640;
+					};
+				};
+			};
+			buildConfigurationList = C2042DBA2F1B579100AD7167 /* Build configuration list for PBXProject "10x Alarm" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C2042DB62F1B579100AD7167;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C2042DC02F1B579100AD7167 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2042DBE2F1B579100AD7167 /* 10x Alarm */,
+				C2042DCE2F1B579200AD7167 /* 10x AlarmTests */,
+				C2042DD82F1B579200AD7167 /* 10x AlarmUITests */,
+				C2042E2B2F1B590900AD7167 /* 10x Alarm WidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2042DBD2F1B579100AD7167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2042E6D2F1C4C4B00AD7167 /* Assets 2.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042DCD2F1B579200AD7167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042DD72F1B579200AD7167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042E2A2F1B590900AD7167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2042DBB2F1B579100AD7167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2042E0F2F1B589B00AD7167 /* TenXAlarmApp.swift in Sources */,
+				C2042E102F1B589B00AD7167 /* SpatialValidator.swift in Sources */,
+				C2042E112F1B589B00AD7167 /* VerificationResultView.swift in Sources */,
+				C2042E122F1B589B00AD7167 /* WelcomeView.swift in Sources */,
+				C2042E132F1B589B00AD7167 /* DaySelectionView.swift in Sources */,
+				C2042E142F1B589B00AD7167 /* AlarmPresentation.swift in Sources */,
+				C2042E152F1B589B00AD7167 /* Verification.swift in Sources */,
+				C2042E162F1B589B00AD7167 /* TimeSelectionView.swift in Sources */,
+				C2042E172F1B589B00AD7167 /* ToothbrushDetector.swift in Sources */,
+				C2042E182F1B589B00AD7167 /* UserSettings.swift in Sources */,
+				C2042E192F1B589B00AD7167 /* StreakService.swift in Sources */,
+				C2042E1A2F1B589B00AD7167 /* yolov8n.mlpackage in Sources */,
+				C2042E1B2F1B589B00AD7167 /* CameraVerificationView.swift in Sources */,
+				C2042E1C2F1B589B00AD7167 /* VerificationService.swift in Sources */,
+				C2042E1D2F1B589B00AD7167 /* SettingsView.swift in Sources */,
+				C2042E1E2F1B589B00AD7167 /* DashboardView.swift in Sources */,
+				C2042E1F2F1B589B00AD7167 /* VerifyBrushIntent.swift in Sources */,
+				C2042E202F1B589B00AD7167 /* CommitmentPickerView.swift in Sources */,
+				C2042E212F1B589B00AD7167 /* AlarmLiveActivity.swift in Sources */,
+				C2042E222F1B589B00AD7167 /* FaceAnalyzer.swift in Sources */,
+				C2042E232F1B589B00AD7167 /* AlarmService.swift in Sources */,
+				C2042E242F1B589B00AD7167 /* OnboardingContainerView.swift in Sources */,
+				C2042E252F1B589B00AD7167 /* StreakData.swift in Sources */,
+				C2042E262F1B589B00AD7167 /* PermissionsView.swift in Sources */,
+				C2042E272F1B589B00AD7167 /* DaySchedule.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042DCB2F1B579200AD7167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042DD52F1B579200AD7167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2042E282F1B590900AD7167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2042DD12F1B579200AD7167 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2042DBE2F1B579100AD7167 /* 10x Alarm */;
+			targetProxy = C2042DD02F1B579200AD7167 /* PBXContainerItemProxy */;
+		};
+		C2042DDB2F1B579200AD7167 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2042DBE2F1B579100AD7167 /* 10x Alarm */;
+			targetProxy = C2042DDA2F1B579200AD7167 /* PBXContainerItemProxy */;
+		};
+		C2042E3B2F1B590A00AD7167 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2042E2B2F1B590900AD7167 /* 10x Alarm WidgetExtension */;
+			targetProxy = C2042E3A2F1B590A00AD7167 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C2042DE12F1B579200AD7167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C2042DE22F1B579200AD7167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		C2042DE42F1B579200AD7167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TenXAlarm.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S4B57YJST2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "10x Alarm needs camera access to verify you're brushing your teeth.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tenxalarm.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2042DE52F1B579200AD7167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TenXAlarm.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S4B57YJST2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "10x Alarm needs camera access to verify you're brushing your teeth.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tenxalarm.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C2042DE72F1B579200AD7167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S4B57YJST2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tenxalarm.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/10x Alarm.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/10x Alarm";
+			};
+			name = Debug;
+		};
+		C2042DE82F1B579200AD7167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S4B57YJST2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tenxalarm.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/10x Alarm.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/10x Alarm";
+			};
+			name = Release;
+		};
+		C2042DEA2F1B579200AD7167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S4B57YJST2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tenxalarm.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "10x Alarm";
+			};
+			name = Debug;
+		};
+		C2042DEB2F1B579200AD7167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S4B57YJST2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tenxalarm.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "10x Alarm";
+			};
+			name = Release;
+		};
+		C2042E3F2F1B590A00AD7167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "10x Alarm WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S4B57YJST2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TenX Alarm Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tenxalarm.app.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2042E402F1B590A00AD7167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "10x Alarm WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S4B57YJST2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TenX Alarm Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tenxalarm.app.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2042DBA2F1B579100AD7167 /* Build configuration list for PBXProject "10x Alarm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2042DE12F1B579200AD7167 /* Debug */,
+				C2042DE22F1B579200AD7167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2042DE32F1B579200AD7167 /* Build configuration list for PBXNativeTarget "10x Alarm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2042DE42F1B579200AD7167 /* Debug */,
+				C2042DE52F1B579200AD7167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2042DE62F1B579200AD7167 /* Build configuration list for PBXNativeTarget "10x AlarmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2042DE72F1B579200AD7167 /* Debug */,
+				C2042DE82F1B579200AD7167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2042DE92F1B579200AD7167 /* Build configuration list for PBXNativeTarget "10x AlarmUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2042DEA2F1B579200AD7167 /* Debug */,
+				C2042DEB2F1B579200AD7167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2042E3E2F1B590A00AD7167 /* Build configuration list for PBXNativeTarget "10x Alarm WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2042E3F2F1B590A00AD7167 /* Debug */,
+				C2042E402F1B590A00AD7167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C2042DB72F1B579100AD7167 /* Project object */;
+}

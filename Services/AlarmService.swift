@@ -195,8 +195,6 @@ final class AlarmService {
     /// Get next scheduled alarm info
     func getNextAlarm() throws -> (dayOfWeek: Int, time: Date)? {
         let schedules = try getEnabledSchedules()
-
-        let calendar = Calendar.current
         let now = Date.now
 
         // Find the next upcoming alarm

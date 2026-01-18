@@ -48,8 +48,8 @@ struct SettingsView: View {
                 } header: {
                     Text("Alarms")
                 } footer: {
-                    if let minimum = userSettings?.weeklyMinimum, minimum < 7 {
-                        Text("You can set alarms on more than \(minimum) days to keep your streak going longer")
+                    if (userSettings?.weeklyMinimum ?? 4) < 7 {
+                        Text("You can set alarms on more than \(userSettings?.weeklyMinimum ?? 4) days to keep your streak going longer.")
                     }
                 }
 
@@ -80,6 +80,23 @@ struct SettingsView: View {
 
                         Text("\(streakData.first?.totalVerifications ?? 0)")
                             .foregroundStyle(.secondary)
+                    }
+                }
+
+                // Appearance
+                Section("Appearance") {
+                    Picker(selection: Binding(
+                        get: { userSettings?.appTheme ?? .system },
+                        set: { newTheme in
+                            userSettings?.updateTheme(newTheme)
+                            try? modelContext.save()
+                        }
+                    )) {
+                        ForEach(AppTheme.allCases, id: \.self) { theme in
+                            Text(theme.displayName).tag(theme)
+                        }
+                    } label: {
+                        Label("Theme", systemImage: "circle.lefthalf.filled")
                     }
                 }
 
@@ -187,6 +204,7 @@ struct AlarmDayRow: View {
             Toggle(isOn: Binding(
                 get: { schedule.isAlarmEnabled },
                 set: { newValue in
+                    // Always allow enabling, only allow disabling if above minimum
                     if newValue || canDisable {
                         schedule.isAlarmEnabled = newValue
                     }
@@ -194,7 +212,6 @@ struct AlarmDayRow: View {
             )) {
                 Text(schedule.dayName)
             }
-            .disabled(!schedule.isAlarmEnabled && !canDisable)
 
             if schedule.isAlarmEnabled {
                 Spacer()
@@ -203,7 +220,7 @@ struct AlarmDayRow: View {
                     showingTimePicker = true
                 } label: {
                     Text(schedule.formattedTime ?? "7:00 AM")
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(Color.accentColor)
                 }
             }
         }
@@ -298,7 +315,7 @@ struct WeeklyMinimumSettingsView: View {
                 VStack(spacing: 24) {
                     Text("\(newMinimum)")
                         .font(.system(size: 72, weight: .bold, design: .rounded))
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(Color.accentColor)
 
                     Text("days per week")
                         .font(.title3)
@@ -312,7 +329,7 @@ struct WeeklyMinimumSettingsView: View {
                         } label: {
                             Image(systemName: "minus.circle.fill")
                                 .font(.system(size: 44))
-                                .foregroundStyle(canDecrease ? .accent : .gray)
+                                .foregroundStyle(canDecrease ? Color.accentColor : Color.gray)
                         }
                         .disabled(!canDecrease)
 
@@ -323,7 +340,7 @@ struct WeeklyMinimumSettingsView: View {
                         } label: {
                             Image(systemName: "plus.circle.fill")
                                 .font(.system(size: 44))
-                                .foregroundStyle(canIncrease ? .accent : .gray)
+                                .foregroundStyle(canIncrease ? Color.accentColor : Color.gray)
                         }
                         .disabled(!canIncrease)
                     }
@@ -334,7 +351,7 @@ struct WeeklyMinimumSettingsView: View {
                 if newMinimum == 7 {
                     Text("7 days enables infinite streak potential!")
                 } else {
-                    Text("With \(newMinimum) days, your maximum streak is \(newMinimum) before reset.")
+                    Text("Set alarms on more than \(newMinimum) days to keep your streak going longer.")
                 }
             }
 

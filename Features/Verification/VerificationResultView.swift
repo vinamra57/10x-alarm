@@ -65,7 +65,7 @@ struct VerificationResultView: View {
                     } label: {
                         Text("View Tips")
                             .font(.subheadline)
-                            .foregroundStyle(.accent)
+                            .foregroundStyle(Color.accentColor)
                     }
                 }
             }
@@ -156,7 +156,7 @@ struct TipRow: View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: icon)
                 .font(.title2)
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
                 .frame(width: 32)
 
             VStack(alignment: .leading, spacing: 4) {

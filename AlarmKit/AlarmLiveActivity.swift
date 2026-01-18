@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import ActivityKit
+import WidgetKit
 
 #if canImport(AlarmKit)
 import AlarmKit
@@ -28,25 +29,86 @@ struct AlarmActivityAttributes: ActivityAttributes {
     var scheduledTime: Date
 }
 
-// MARK: - Live Activity View
+// MARK: - Live Activity Configuration
+
+struct AlarmLiveActivity: Widget {
+    var body: some WidgetConfiguration {
+        ActivityConfiguration(for: AlarmActivityAttributes.self) { context in
+            // Lock Screen / Banner UI
+            AlarmLiveActivityView(
+                title: context.state.title,
+                isBackupAlarm: context.state.isBackupAlarm,
+                minutesSinceStart: context.state.minutesSinceStart
+            )
+        } dynamicIsland: { context in
+            DynamicIsland {
+                // Expanded view
+                DynamicIslandExpandedRegion(.leading) {
+                    Image(systemName: "alarm.fill")
+                        .foregroundStyle(Color.accentColor)
+                }
+
+                DynamicIslandExpandedRegion(.trailing) {
+                    if context.state.isBackupAlarm {
+                        Text("\(context.state.minutesSinceStart)m")
+                            .font(.caption)
+                    }
+                }
+
+                DynamicIslandExpandedRegion(.center) {
+                    Text(context.state.title)
+                        .font(.headline)
+                }
+
+                DynamicIslandExpandedRegion(.bottom) {
+                    Link(destination: URL(string: "tenxalarm://verify")!) {
+                        HStack {
+                            Image(systemName: "camera.fill")
+                            Text("Verify Brush")
+                        }
+                        .font(.subheadline.bold())
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 8)
+                        .background(Color.accentColor)
+                        .foregroundStyle(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                }
+            } compactLeading: {
+                Image(systemName: "alarm.fill")
+                    .foregroundStyle(Color.accentColor)
+            } compactTrailing: {
+                Text(context.state.title)
+                    .lineLimit(1)
+            } minimal: {
+                Image(systemName: "alarm.fill")
+                    .foregroundStyle(Color.accentColor)
+            }
+        }
+    }
+}
+
+// MARK: - Lock Screen View
 
 struct AlarmLiveActivityView: View {
-    let context: ActivityViewContext<AlarmActivityAttributes>
+    let title: String
+    let isBackupAlarm: Bool
+    let minutesSinceStart: Int
 
     var body: some View {
         VStack(spacing: 12) {
             // Title
             HStack {
                 Image(systemName: "alarm.fill")
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
 
-                Text(context.state.title)
+                Text(title)
                     .font(.headline)
 
                 Spacer()
 
-                if context.state.isBackupAlarm {
-                    Text("\(context.state.minutesSinceStart) min")
+                if isBackupAlarm {
+                    Text("\(minutesSinceStart) min")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -67,60 +129,6 @@ struct AlarmLiveActivityView: View {
             }
         }
         .padding()
-    }
-}
-
-// MARK: - Dynamic Island Views
-
-struct AlarmDynamicIslandExpandedView: View {
-    let context: ActivityViewContext<AlarmActivityAttributes>
-
-    var body: some View {
-        DynamicIslandExpandedRegion(.leading) {
-            Image(systemName: "alarm.fill")
-                .foregroundStyle(.accent)
-        }
-
-        DynamicIslandExpandedRegion(.trailing) {
-            if context.state.isBackupAlarm {
-                Text("\(context.state.minutesSinceStart)m")
-                    .font(.caption)
-            }
-        }
-
-        DynamicIslandExpandedRegion(.center) {
-            Text(context.state.title)
-                .font(.headline)
-        }
-
-        DynamicIslandExpandedRegion(.bottom) {
-            Link(destination: URL(string: "tenxalarm://verify")!) {
-                HStack {
-                    Image(systemName: "camera.fill")
-                    Text("Verify Brush")
-                }
-                .font(.subheadline.bold())
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)
-                .background(Color.accentColor)
-                .foregroundStyle(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-            }
-        }
-    }
-}
-
-struct AlarmDynamicIslandCompactView: View {
-    let context: ActivityViewContext<AlarmActivityAttributes>
-
-    var body: some View {
-        HStack {
-            Image(systemName: "alarm.fill")
-                .foregroundStyle(.accent)
-
-            Text(context.state.title)
-                .lineLimit(1)
-        }
     }
 }
 
