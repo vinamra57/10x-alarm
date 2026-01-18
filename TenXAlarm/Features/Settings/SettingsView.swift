@@ -19,7 +19,7 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 // Alarm settings
-                Section("Alarms") {
+                Section {
                     NavigationLink {
                         AlarmScheduleSettingsView()
                     } label: {
@@ -44,6 +44,12 @@ struct SettingsView: View {
                             Text("\(userSettings?.weeklyMinimum ?? 4) days")
                                 .foregroundStyle(.secondary)
                         }
+                    }
+                } header: {
+                    Text("Alarms")
+                } footer: {
+                    if let minimum = userSettings?.weeklyMinimum, minimum < 7 {
+                        Text("You can set alarms on more than \(minimum) days to keep your streak going longer")
                     }
                 }
 
