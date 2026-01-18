@@ -10,7 +10,6 @@ struct SettingsView: View {
     @Query private var streakData: [StreakData]
 
     @Binding var currentTheme: AppTheme
-    @State private var showingResetConfirmation = false
 
     private var themeManager = ThemeManager.shared
 
@@ -123,15 +122,6 @@ struct SettingsView: View {
                         Label("Get Help", systemImage: "questionmark.circle")
                     }
                 }
-
-                // Danger zone
-                Section {
-                    Button(role: .destructive) {
-                        showingResetConfirmation = true
-                    } label: {
-                        Label("Reset Streak", systemImage: "arrow.counterclockwise")
-                    }
-                }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
@@ -142,26 +132,11 @@ struct SettingsView: View {
                     }
                 }
             }
-            .alert("Reset Streak?", isPresented: $showingResetConfirmation) {
-                Button("Cancel", role: .cancel) {}
-                Button("Reset", role: .destructive) {
-                    resetStreak()
-                }
-            } message: {
-                Text("This will reset your current streak to 0. This cannot be undone.")
-            }
         }
     }
 
     private var enabledDaysCount: Int {
         daySchedules.filter { $0.isAlarmEnabled }.count
-    }
-
-    private func resetStreak() {
-        if let streak = streakData.first {
-            streak.resetStreak()
-            try? modelContext.save()
-        }
     }
 }
 
