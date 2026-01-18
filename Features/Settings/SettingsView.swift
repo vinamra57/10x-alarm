@@ -102,26 +102,6 @@ struct SettingsView: View {
                         themeManager.currentTheme = newTheme
                     }
                 }
-
-                // About
-                Section("About") {
-                    HStack {
-                        Label("Version", systemImage: "info.circle")
-
-                        Spacer()
-
-                        Text("1.0.0")
-                            .foregroundStyle(.secondary)
-                    }
-
-                    Link(destination: URL(string: "https://10xalarm.app/privacy")!) {
-                        Label("Privacy Policy", systemImage: "hand.raised")
-                    }
-
-                    Link(destination: URL(string: "https://10xalarm.app/support")!) {
-                        Label("Get Help", systemImage: "questionmark.circle")
-                    }
-                }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
