@@ -5,6 +5,7 @@ struct DaySelectionView: View {
     let weeklyMinimum: Int
     @Binding var selectedDays: Set<Int>
     let onContinue: () -> Void
+    let theme: AppTheme
 
     private let days = [
         (1, "Monday", "M"),
@@ -28,10 +29,11 @@ struct DaySelectionView: View {
             VStack(spacing: 12) {
                 Text("Pick Your Days")
                     .font(.largeTitle.bold())
+                    .foregroundStyle(OnboardingColors.primaryText(for: theme))
 
                 Text("Select at least \(weeklyMinimum) days for your morning alarm")
                     .font(.body)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(OnboardingColors.secondaryText(for: theme))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
@@ -47,6 +49,7 @@ struct DaySelectionView: View {
                             letter: day.2,
                             fullName: day.1,
                             isSelected: selectedDays.contains(day.0),
+                            theme: theme,
                             action: { toggleDay(day.0) }
                         )
                     }
@@ -59,6 +62,7 @@ struct DaySelectionView: View {
                             letter: day.2,
                             fullName: day.1,
                             isSelected: selectedDays.contains(day.0),
+                            theme: theme,
                             action: { toggleDay(day.0) }
                         )
                     }
@@ -68,7 +72,7 @@ struct DaySelectionView: View {
             // Count indicator
             Text("\(selectedDays.count) of \(weeklyMinimum) minimum selected")
                 .font(.subheadline)
-                .foregroundStyle(canContinue ? .secondary : .orange)
+                .foregroundStyle(canContinue ? OnboardingColors.secondaryText(for: theme) : Color.orange)
 
             Spacer()
 
@@ -78,7 +82,7 @@ struct DaySelectionView: View {
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(canContinue ? Color.accentColor : Color(.systemGray4))
+                    .background(canContinue ? Color.accentColor : Color(white: 0.3))
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
             }
@@ -106,6 +110,7 @@ struct DayButton: View {
     let letter: String
     let fullName: String
     let isSelected: Bool
+    let theme: AppTheme
     let action: () -> Void
 
     var body: some View {
@@ -118,8 +123,8 @@ struct DayButton: View {
                     .font(.caption2)
             }
             .frame(width: 56, height: 64)
-            .background(isSelected ? Color.accentColor : Color(.secondarySystemBackground))
-            .foregroundStyle(isSelected ? .white : .primary)
+            .background(isSelected ? Color.accentColor : OnboardingColors.cardBackground(for: theme))
+            .foregroundStyle(isSelected ? .white : OnboardingColors.primaryText(for: theme))
             .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .buttonStyle(.plain)
@@ -127,9 +132,14 @@ struct DayButton: View {
 }
 
 #Preview {
-    DaySelectionView(
-        weeklyMinimum: 4,
-        selectedDays: .constant([1, 2, 3, 4]),
-        onContinue: {}
-    )
+    ZStack {
+        OnboardingColors.background(for: .dark)
+            .ignoresSafeArea()
+        DaySelectionView(
+            weeklyMinimum: 4,
+            selectedDays: .constant([1, 2, 3, 4]),
+            onContinue: {},
+            theme: .dark
+        )
+    }
 }
