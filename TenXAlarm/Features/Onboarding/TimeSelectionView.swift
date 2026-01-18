@@ -5,13 +5,14 @@ struct TimeSelectionView: View {
     let selectedDays: Set<Int>
     @Binding var alarmTimes: [Int: Date]
     let onContinue: () -> Void
+    let theme: AppTheme
 
     @State private var useSameTime = true
     @State private var globalTime = defaultAlarmTime
 
     private static var defaultAlarmTime: Date {
         var components = DateComponents()
-        components.hour = 7
+        components.hour = 8
         components.minute = 0
         return Calendar.current.date(from: components) ?? Date()
     }
@@ -36,15 +37,18 @@ struct TimeSelectionView: View {
             VStack(spacing: 12) {
                 Text("Set Alarm Times")
                     .font(.largeTitle.bold())
+                    .foregroundStyle(OnboardingColors.primaryText(for: theme))
 
                 Text("When should your alarm wake you?")
                     .font(.body)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(OnboardingColors.secondaryText(for: theme))
             }
             .padding(.top)
 
             // Same time toggle
             Toggle("Same time every day", isOn: $useSameTime)
+                .foregroundStyle(OnboardingColors.primaryText(for: theme))
+                .tint(Color.accentColor)
                 .padding(.horizontal, 24)
                 .onChange(of: useSameTime) { _, newValue in
                     if newValue {
@@ -75,10 +79,10 @@ struct TimeSelectionView: View {
 
                     Text("Maximum 10:00 AM")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(OnboardingColors.secondaryText(for: theme))
                 }
                 .padding()
-                .background(Color(.secondarySystemBackground))
+                .background(OnboardingColors.cardBackground(for: theme))
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .padding(.horizontal, 24)
             } else {
@@ -86,25 +90,15 @@ struct TimeSelectionView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(sortedDays, id: \.self) { day in
-                            HStack {
-                                Text(dayNames[day] ?? "")
-                                    .font(.headline)
-
-                                Spacer()
-
-                                DatePicker(
-                                    "",
-                                    selection: Binding(
-                                        get: { alarmTimes[day] ?? Self.defaultAlarmTime },
-                                        set: { alarmTimes[day] = clampTime($0) }
-                                    ),
-                                    displayedComponents: .hourAndMinute
-                                )
-                                .labelsHidden()
-                            }
-                            .padding()
-                            .background(Color(.secondarySystemBackground))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            DayTimePicker(
+                                dayName: dayNames[day] ?? "",
+                                time: Binding(
+                                    get: { alarmTimes[day] ?? Self.defaultAlarmTime },
+                                    set: { alarmTimes[day] = $0 }
+                                ),
+                                theme: theme,
+                                clampTime: clampTime
+                            )
                         }
                     }
                     .padding(.horizontal, 24)
@@ -112,7 +106,7 @@ struct TimeSelectionView: View {
 
                 Text("Maximum 10:00 AM for all alarms")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(OnboardingColors.secondaryText(for: theme))
             }
 
             Spacer()
@@ -164,10 +158,56 @@ struct TimeSelectionView: View {
     }
 }
 
+// MARK: - Day Time Picker
+
+struct DayTimePicker: View {
+    let dayName: String
+    @Binding var time: Date
+    let theme: AppTheme
+    let clampTime: (Date) -> Date
+
+    @State private var localTime: Date = Date()
+
+    var body: some View {
+        HStack {
+            Text(dayName)
+                .font(.headline)
+                .foregroundStyle(OnboardingColors.primaryText(for: theme))
+
+            Spacer()
+
+            DatePicker(
+                "",
+                selection: $localTime,
+                displayedComponents: .hourAndMinute
+            )
+            .labelsHidden()
+            .onChange(of: localTime) { _, newTime in
+                let clamped = clampTime(newTime)
+                if clamped != newTime {
+                    localTime = clamped
+                }
+                time = clamped
+            }
+        }
+        .padding()
+        .background(OnboardingColors.cardBackground(for: theme))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .onAppear {
+            localTime = time
+        }
+    }
+}
+
 #Preview {
-    TimeSelectionView(
-        selectedDays: [1, 2, 3, 4, 5],
-        alarmTimes: .constant([:]),
-        onContinue: {}
-    )
+    ZStack {
+        OnboardingColors.background(for: .dark)
+            .ignoresSafeArea()
+        TimeSelectionView(
+            selectedDays: [1, 2, 3, 4, 5],
+            alarmTimes: .constant([:]),
+            onContinue: {},
+            theme: .dark
+        )
+    }
 }
