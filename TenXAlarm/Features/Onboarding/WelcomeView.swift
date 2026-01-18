@@ -3,6 +3,7 @@ import SwiftUI
 /// Welcome screen with value proposition
 struct WelcomeView: View {
     let onContinue: () -> Void
+    let theme: AppTheme
 
     var body: some View {
         VStack(spacing: 32) {
@@ -11,38 +12,35 @@ struct WelcomeView: View {
             // Icon
             Image(systemName: "alarm.fill")
                 .font(.system(size: 80))
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
 
             // Title
-            VStack(spacing: 12) {
-                Text("10x Alarm")
-                    .font(.largeTitle.bold())
-
-                Text("The alarm that makes you brush")
-                    .font(.title3)
-                    .foregroundStyle(.secondary)
-            }
+            Text("10x Alarm")
+                .font(.largeTitle.bold())
+                .foregroundStyle(OnboardingColors.primaryText(for: theme))
 
             Spacer()
 
             // Warning
-            VStack(spacing: 16) {
-                Label {
-                    Text("This is a commitment")
-                        .font(.headline)
-                } icon: {
+            VStack(spacing: 12) {
+                HStack(spacing: 8) {
                     Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.title2)
                         .foregroundStyle(.orange)
+
+                    Text("Are you ready?")
+                        .font(.headline)
+                        .foregroundStyle(OnboardingColors.primaryText(for: theme))
                 }
 
-                Text("Once your alarm goes off, it won't stop until you prove you're brushing your teeth. No snooze. No skip.")
+                Text("Once your alarm goes off, it won't stop until our ML models approve a picture of you brushing your teeth. No snooze. No skip.")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(OnboardingColors.secondaryText(for: theme))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
             .padding()
-            .background(Color(.secondarySystemBackground))
+            .background(OnboardingColors.cardBackground(for: theme))
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .padding(.horizontal)
 
@@ -50,7 +48,7 @@ struct WelcomeView: View {
 
             // Continue button
             Button(action: onContinue) {
-                Text("I'm Ready")
+                Text("Let's go")
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -65,5 +63,9 @@ struct WelcomeView: View {
 }
 
 #Preview {
-    WelcomeView(onContinue: {})
+    ZStack {
+        OnboardingColors.background(for: .dark)
+            .ignoresSafeArea()
+        WelcomeView(onContinue: {}, theme: .dark)
+    }
 }
