@@ -4,11 +4,14 @@ import SwiftData
 /// Main dashboard view shown after onboarding
 struct DashboardView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.colorScheme) private var systemColorScheme
     @Query private var streakData: [StreakData]
+    @Query private var settings: [UserSettings]
     @Query(sort: \DaySchedule.dayOfWeek) private var daySchedules: [DaySchedule]
     @Query(sort: \Verification.date, order: .reverse) private var verifications: [Verification]
 
     @State private var showingSettings = false
+    @State private var currentThemeForSheet: AppTheme = .system
 
     private var currentStreak: Int {
         streakData.first?.currentStreak ?? 0
@@ -50,8 +53,20 @@ struct DashboardView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showingSettings) {
-                SettingsView()
+            .sheet(isPresented: $showingSettings, onDismiss: {
+                // Sync back to saved theme
+                currentThemeForSheet = settings.first?.appTheme ?? .system
+            }) {
+                SettingsView(currentTheme: $currentThemeForSheet)
+                    .preferredColorScheme(currentThemeForSheet.colorScheme ?? systemColorScheme)
+            }
+            .onAppear {
+                currentThemeForSheet = settings.first?.appTheme ?? .system
+            }
+            .onChange(of: showingSettings) { _, isShowing in
+                if isShowing {
+                    currentThemeForSheet = settings.first?.appTheme ?? .system
+                }
             }
         }
     }

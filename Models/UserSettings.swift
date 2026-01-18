@@ -1,6 +1,32 @@
 import Foundation
 import SwiftData
 import SwiftUI
+import UIKit
+
+/// Observable theme manager for immediate UI updates
+@Observable
+final class ThemeManager {
+    static let shared = ThemeManager()
+
+    var currentTheme: AppTheme = .system {
+        didSet {
+            applyTheme()
+        }
+    }
+
+    private init() {}
+
+    func applyTheme() {
+        Task { @MainActor in
+            for scene in UIApplication.shared.connectedScenes {
+                guard let windowScene = scene as? UIWindowScene else { continue }
+                for window in windowScene.windows {
+                    window.overrideUserInterfaceStyle = currentTheme.uiUserInterfaceStyle
+                }
+            }
+        }
+    }
+}
 
 /// App theme preference
 enum AppTheme: Int, Codable, CaseIterable {
@@ -19,6 +45,14 @@ enum AppTheme: Int, Codable, CaseIterable {
     var colorScheme: ColorScheme? {
         switch self {
         case .system: return nil
+        case .light: return .light
+        case .dark: return .dark
+        }
+    }
+
+    var uiUserInterfaceStyle: UIUserInterfaceStyle {
+        switch self {
+        case .system: return .unspecified
         case .light: return .light
         case .dark: return .dark
         }

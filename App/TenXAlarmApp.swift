@@ -68,13 +68,10 @@ struct TenXAlarmApp: App {
 struct RootView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var settings: [UserSettings]
+    private var themeManager = ThemeManager.shared
 
     private var hasCompletedOnboarding: Bool {
         settings.first?.onboardingCompleted ?? false
-    }
-
-    private var preferredColorScheme: ColorScheme? {
-        settings.first?.appTheme.colorScheme
     }
 
     var body: some View {
@@ -85,7 +82,11 @@ struct RootView: View {
                 OnboardingContainerView()
             }
         }
-        .preferredColorScheme(preferredColorScheme)
+        .preferredColorScheme(themeManager.currentTheme.colorScheme)
+        .onAppear {
+            // Sync ThemeManager with saved theme on launch
+            themeManager.currentTheme = settings.first?.appTheme ?? .system
+        }
     }
 }
 

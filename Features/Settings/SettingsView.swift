@@ -9,7 +9,14 @@ struct SettingsView: View {
     @Query(sort: \DaySchedule.dayOfWeek) private var daySchedules: [DaySchedule]
     @Query private var streakData: [StreakData]
 
+    @Binding var currentTheme: AppTheme
     @State private var showingResetConfirmation = false
+
+    private var themeManager = ThemeManager.shared
+
+    init(currentTheme: Binding<AppTheme>) {
+        self._currentTheme = currentTheme
+    }
 
     private var userSettings: UserSettings? {
         settings.first
@@ -85,18 +92,15 @@ struct SettingsView: View {
 
                 // Appearance
                 Section("Appearance") {
-                    Picker(selection: Binding(
-                        get: { userSettings?.appTheme ?? .system },
-                        set: { newTheme in
-                            userSettings?.updateTheme(newTheme)
-                            try? modelContext.save()
-                        }
-                    )) {
+                    Picker("Theme", selection: $currentTheme) {
                         ForEach(AppTheme.allCases, id: \.self) { theme in
                             Text(theme.displayName).tag(theme)
                         }
-                    } label: {
-                        Label("Theme", systemImage: "circle.lefthalf.filled")
+                    }
+                    .onChange(of: currentTheme) { _, newTheme in
+                        userSettings?.updateTheme(newTheme)
+                        try? modelContext.save()
+                        themeManager.currentTheme = newTheme
                     }
                 }
 
@@ -232,6 +236,7 @@ struct AlarmDayRow: View {
 
 struct TimePickerSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @Query private var settings: [UserSettings]
     @Bindable var schedule: DaySchedule
 
     @State private var selectedTime: Date
@@ -281,6 +286,7 @@ struct TimePickerSheet: View {
             }
         }
         .presentationDetents([.medium])
+        .preferredColorScheme(settings.first?.appTheme.colorScheme)
     }
 }
 
@@ -378,6 +384,6 @@ struct WeeklyMinimumSettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(currentTheme: .constant(.system))
         .modelContainer(for: [UserSettings.self, DaySchedule.self, StreakData.self], inMemory: true)
 }

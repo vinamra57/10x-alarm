@@ -1,7 +1,10 @@
 import SwiftUI
+import SwiftData
 
 /// Shows the result of a verification attempt
 struct VerificationResultView: View {
+    @Query private var settings: [UserSettings]
+
     let result: VerificationOutput
     let attemptCount: Int
     let onRetry: () -> Void
@@ -73,6 +76,7 @@ struct VerificationResultView: View {
             .padding(.bottom, 32)
         }
         .padding(.top, 32)
+        .preferredColorScheme(settings.first?.appTheme.colorScheme)
     }
 }
 
