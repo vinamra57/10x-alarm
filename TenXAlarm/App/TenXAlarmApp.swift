@@ -25,8 +25,9 @@ struct TenXAlarmApp: App {
             )
 
             // Initialize day schedules if needed
-            Task {
-                await initializeDaySchedules()
+            let container = modelContainer
+            Task { @MainActor in
+                Self.initializeDaySchedules(in: container)
             }
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")
@@ -41,8 +42,8 @@ struct TenXAlarmApp: App {
     }
 
     @MainActor
-    private func initializeDaySchedules() async {
-        let context = modelContainer.mainContext
+    private static func initializeDaySchedules(in container: ModelContainer) {
+        let context = container.mainContext
         let descriptor = FetchDescriptor<DaySchedule>()
 
         do {
@@ -72,6 +73,10 @@ struct RootView: View {
         settings.first?.onboardingCompleted ?? false
     }
 
+    private var preferredColorScheme: ColorScheme? {
+        settings.first?.appTheme.colorScheme
+    }
+
     var body: some View {
         Group {
             if hasCompletedOnboarding {
@@ -80,6 +85,7 @@ struct RootView: View {
                 OnboardingContainerView()
             }
         }
+        .preferredColorScheme(preferredColorScheme)
     }
 }
 
